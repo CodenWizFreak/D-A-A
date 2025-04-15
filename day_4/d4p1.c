@@ -153,7 +153,7 @@ int main() {
     return 0;
 }
 
-/* Output:
+/* Output Random:
 
 First Menu:
 1. Ascending Order Array
@@ -196,6 +196,75 @@ Enter your choice: 3
 Sorted Array: 11 13 34 49 59 62 70 77 78 89 
 Number of comparisons: 21
 Time taken: 0.000004 seconds
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 4
+
+First Menu:
+1. Ascending Order Array
+2. Descending Order Array
+3. Random Array
+4. Exit
+Enter your choice: 4
+Exiting program...
+
+*/
+
+/* Output Ascending:
+First Menu:
+1. Ascending Order Array
+2. Descending Order Array
+3. Random Array
+4. Exit
+Enter your choice: 1
+Enter 10 elements in Ascending Order:
+1
+5
+6
+9
+16
+19
+52
+67
+79
+86
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 1
+
+Sorted Array: 1 5 6 9 16 19 52 67 79 86 
+Number of comparisons: 45
+Time taken: 0.000002 seconds
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 2
+
+Sorted Array: 1 5 6 9 16 19 52 67 79 86 
+Number of comparisons: 45
+Time taken: 0.000002 seconds
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 3
+
+Sorted Array: 1 5 6 9 16 19 52 67 79 86 
+Number of comparisons: 27
+Time taken: 0.000007 seconds
 
 Second Menu:
 1. First element as pivot
