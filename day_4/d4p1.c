@@ -9,6 +9,8 @@ The second menu will have the option of selecting the first element as pivot, th
 #include <stdlib.h>
 #include <time.h>
 
+#define SIZE 10
+
 // Function to swap two elements
 void swap(int *a, int *b) {
     int temp = *a;
@@ -16,78 +18,74 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-// Partition function to perform QuickSort
+// Partition function with correct pivot handling
 int partition(int arr[], int low, int high, int pivotChoice, int *comparisons) {
-    int pivot, i, j;
+    int pivot;
 
-    // Pivot selection based on user choice
+    // Handle pivot selection and move it to the end
     if (pivotChoice == 1) {
-        pivot = arr[low]; // First element as pivot
-    } else if (pivotChoice == 2) {
-        pivot = arr[high]; // Last element as pivot
-    } else {
+        swap(&arr[low], &arr[high]);  // Move first element to end
+    } else if (pivotChoice == 3) {
         int randomIndex = low + rand() % (high - low + 1);
-        pivot = arr[randomIndex]; // Random element as pivot
-        swap(&arr[randomIndex], &arr[high]); // Move random pivot to the end
+        swap(&arr[randomIndex], &arr[high]);  // Move random pivot to end
     }
 
-    i = low - 1;
-    for (j = low; j < high; j++) {
-        (*comparisons)++; // Count the comparison
+    pivot = arr[high]; // Pivot is now at end
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        (*comparisons)++;
         if (arr[j] <= pivot) {
             i++;
             swap(&arr[i], &arr[j]);
         }
     }
-    swap(&arr[i + 1], &arr[high]); // Swap the pivot to the correct position
+
+    swap(&arr[i + 1], &arr[high]);
     return i + 1;
 }
 
-// QuickSort function to sort the array
+// QuickSort recursive function
 void quickSort(int arr[], int low, int high, int pivotChoice, int *comparisons) {
     if (low < high) {
         int pi = partition(arr, low, high, pivotChoice, comparisons);
-        quickSort(arr, low, pi - 1, pivotChoice, comparisons);  // Sort left part
-        quickSort(arr, pi + 1, high, pivotChoice, comparisons); // Sort right part
+        quickSort(arr, low, pi - 1, pivotChoice, comparisons);
+        quickSort(arr, pi + 1, high, pivotChoice, comparisons);
     }
 }
 
-// Function to take array input for ascending, descending, or random
+// Function to input array
 void inputArray(int arr[], int size, int orderType) {
-    int i;
-
-    // If orderType is 1, input for ascending
-    // If orderType is 2, input for descending
-    // If orderType is 3, generate random array
     if (orderType == 1) {
         printf("Enter %d elements in Ascending Order:\n", size);
-        for (i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             scanf("%d", &arr[i]);
         }
     } else if (orderType == 2) {
         printf("Enter %d elements in Descending Order:\n", size);
-        for (i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             scanf("%d", &arr[i]);
         }
     } else if (orderType == 3) {
         printf("Generating Random Array:\n");
-        for (i = 0; i < size; i++) {
-            arr[i] = rand() % 100 + 1; // Random number between 1 and 100
+        for (int i = 0; i < size; i++) {
+            arr[i] = rand() % 100 + 1;
         }
+        for (int i = 0; i < size; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
     }
 }
 
-// Main program with nested switch-case
 int main() {
-    int choice, pivotChoice, size = 10;
-    int arr[size];
-    int exitCount = 0; // Counter to track how many times "Exit" is pressed
+    int choice, pivotChoice;
+    int arr[SIZE], originalArr[SIZE];
 
-    // Seed the random number generator
-    srand(time(0));
+    srand(time(0)); // Seed random number generator
 
     while (1) {
-        // Outer switch-case for array input type
+        // Outer menu
         printf("\nFirst Menu:\n");
         printf("1. Ascending Order Array\n");
         printf("2. Descending Order Array\n");
@@ -97,65 +95,54 @@ int main() {
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1:  // Ascending Order Array
-            case 2:  // Descending Order Array
-            case 3:  // Random Array
-                // Call the inputArray function to take user input based on choice
-                inputArray(arr, size, choice);
+            case 1:
+            case 2:
+            case 3:
+                inputArray(arr, SIZE, choice);
 
-                // Inner switch-case for pivot selection
+                // Backup the original array for multiple sorts
+                for (int i = 0; i < SIZE; i++) {
+                    originalArr[i] = arr[i];
+                }
+
                 while (1) {
                     printf("\nSecond Menu:\n");
                     printf("1. First element as pivot\n");
                     printf("2. Last element as pivot\n");
                     printf("3. Random element as pivot\n");
-                    printf("4. Exit\n");
+                    printf("4. Exit to main menu\n");
                     printf("Enter your choice: ");
                     scanf("%d", &pivotChoice);
 
-                    switch (pivotChoice) {
-                        case 1: // First element as pivot
-                        case 2: // Last element as pivot
-                        case 3: // Random element as pivot
-                            // Run QuickSort and track comparisons
-                            int comparisons = 0;
-                            clock_t start = clock();
-                            quickSort(arr, 0, size - 1, pivotChoice, &comparisons);
-                            clock_t end = clock();
-                            double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
+                    if (pivotChoice >= 1 && pivotChoice <= 3) {
+                        // Restore the original array
+                        for (int i = 0; i < SIZE; i++) {
+                            arr[i] = originalArr[i];
+                        }
 
-                            // Output results
-                            printf("\nSorted Array: ");
-                            for (int i = 0; i < size; i++) {
-                                printf("%d ", arr[i]);
-                            }
-                            printf("\nNumber of comparisons: %d\n", comparisons);
-                            printf("Time taken: %f seconds\n");
-                            break;
+                        int comparisons = 0;
+                        clock_t start = clock();
+                        quickSort(arr, 0, SIZE - 1, pivotChoice, &comparisons);
+                        clock_t end = clock();
+                        double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-                        case 4:  // Exit from inner menu, goes back to outer menu
-                            exitCount++;
-                            if (exitCount == 2) {
-                                return 0; // Exit the program if 'Exit' is pressed twice
-                            } else {
-                                break; // Return to the outer menu if exit is pressed once
-                            }
-
-                        default:
-                            printf("Invalid choice! Please select a valid option.\n");
-                            break;
+                        printf("\nSorted Array: ");
+                        for (int i = 0; i < SIZE; i++) {
+                            printf("%d ", arr[i]);
+                        }
+                        printf("\nNumber of comparisons: %d\n", comparisons);
+                        printf("Time taken: %f seconds\n", time_taken);
+                    } else if (pivotChoice == 4) {
+                        break; // Exit inner menu
+                    } else {
+                        printf("Invalid choice! Please select a valid option.\n");
                     }
-                    if (exitCount == 2) break; // Break out of the loop if program is to terminate
                 }
                 break;
 
-            case 4:  // Exit from outer menu
-                exitCount++;
-                if (exitCount == 2) {
-                    return 0; // Exit the program if 'Exit' is pressed twice
-                } else {
-                    break; // Return to the outer menu if exit is pressed once
-                }
+            case 4:
+                printf("Exiting program...\n");
+                return 0;
 
             default:
                 printf("Invalid choice! Please select a valid option.\n");
@@ -165,3 +152,4 @@ int main() {
 
     return 0;
 }
+
