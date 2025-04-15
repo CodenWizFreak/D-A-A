@@ -153,3 +153,63 @@ int main() {
     return 0;
 }
 
+/* Output:
+
+First Menu:
+1. Ascending Order Array
+2. Descending Order Array
+3. Random Array
+4. Exit
+Enter your choice: 3
+Generating Random Array:
+11 70 77 62 13 34 59 89 49 78 
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 1
+
+Sorted Array: 11 13 34 49 59 62 70 77 78 89 
+Number of comparisons: 28
+Time taken: 0.000002 seconds
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 2
+
+Sorted Array: 11 13 34 49 59 62 70 77 78 89 
+Number of comparisons: 23
+Time taken: 0.000003 seconds
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 3
+
+Sorted Array: 11 13 34 49 59 62 70 77 78 89 
+Number of comparisons: 21
+Time taken: 0.000004 seconds
+
+Second Menu:
+1. First element as pivot
+2. Last element as pivot
+3. Random element as pivot
+4. Exit to main menu
+Enter your choice: 4
+
+First Menu:
+1. Ascending Order Array
+2. Descending Order Array
+3. Random Array
+4. Exit
+Enter your choice: 4
+Exiting program...
+
+*/
