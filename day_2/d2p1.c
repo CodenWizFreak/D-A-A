@@ -1,4 +1,4 @@
-/*  Write two iterative programs to compute Xn, where both X & n are integers, one computes it in O(n) time & the other in O(log n) time. */
+/*  Write two iterative programs to compute X^n, where both X & n are integers, one computes it in O(n) time & the other in O(log n) time. */
 
 #include <stdio.h>
 
