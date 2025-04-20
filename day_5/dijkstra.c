@@ -130,5 +130,28 @@ void dijkstra(AdjList adj[], int source) {
     }
 }
 
+void read_graph(const char *filename, AdjList adj[]) {
+    FILE *file = fopen(filename, "r");
+    if (!file) {
+        perror("Unable to open file");
+        exit(1);
+    }
+
+    char word[10];
+    for (int i = 0; i < V; i++) {
+        adj[i].edge_count = 0;
+        for (int j = 0; j < V; j++) {
+            fscanf(file, "%s", word);
+            int weight = (strcmp(word, "INF") == 0) ? INF_VALUE : atoi(word);
+            if (weight != INF_VALUE && i != j) {
+                adj[i].edges[adj[i].edge_count].vertex = j;
+                adj[i].edges[adj[i].edge_count].weight = weight;
+                adj[i].edge_count++;
+            }
+        }
+    }
+
+    fclose(file);
+}
 
    
