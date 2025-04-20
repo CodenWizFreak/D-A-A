@@ -115,4 +115,19 @@ void dijkstra(AdjList adj[], int source) {
             }
         }
     }
+    printf("Shortest paths from vertex %c:\n", 's' + source);
+    for (int i = 0; i < V; i++) {
+        if (i == source) continue;
+        printf("%c -> ", 's' + source);
+        int path[V], count = 0;
+        for (int v = i; v != -1; v = prev[v])
+            path[count++] = v;
+        for (int j = count - 1; j >= 0; j--) {
+            printf("%c", 's' + path[j]);
+            if (j != 0) printf(" -> ");
+        }
+        printf(" (Cost: %d)\n", dist[i]);
+    }
+}
+
    
