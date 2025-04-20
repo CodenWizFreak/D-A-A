@@ -69,3 +69,16 @@ void heapify_down(MinHeap *heap, int index) {
         heapify_down(heap, smallest);
     }
 }
+
+void insert(MinHeap *heap, int vertex, int distance) {
+    heap->data[heap->size].vertex = vertex;
+    heap->data[heap->size].distance = distance;
+    heapify_up(heap, heap->size++);
+}
+
+HeapNode extract_min(MinHeap *heap) {
+    HeapNode root = heap->data[0];
+    heap->data[0] = heap->data[--heap->size];
+    heapify_down(heap, 0);
+    return root;
+}
