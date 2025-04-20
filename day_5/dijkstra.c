@@ -96,3 +96,23 @@ void dijkstra(AdjList adj[], int source) {
         dist[i] = INF_VALUE;
         prev[i] = -1;
     }
+    dist[source] = 0;
+    insert(&heap, source, 0);
+
+    while (!is_empty(&heap)) {
+        HeapNode node = extract_min(&heap);
+        int u = node.vertex;
+
+        for (int i = 0; i < adj[u].edge_count; i++) {
+            Edge e = adj[u].edges[i];
+            int v = e.vertex;
+            int weight = e.weight;
+
+            if (dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
+                prev[v] = u;
+                insert(&heap, v, dist[v]);
+            }
+        }
+    }
+   
