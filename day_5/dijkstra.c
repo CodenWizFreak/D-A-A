@@ -82,3 +82,17 @@ HeapNode extract_min(MinHeap *heap) {
     heapify_down(heap, 0);
     return root;
 }
+
+int is_empty(MinHeap *heap) {
+    return heap->size == 0;
+}
+
+void dijkstra(AdjList adj[], int source) {
+    int dist[V];
+    int prev[V];
+    MinHeap heap = { .size = 0 };
+    
+    for (int i = 0; i < V; i++) {
+        dist[i] = INF_VALUE;
+        prev[i] = -1;
+    }
