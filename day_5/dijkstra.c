@@ -29,3 +29,19 @@ typedef struct {
     Edge edges[V];
     int edge_count;
 } AdjList;
+
+typedef struct {
+    int vertex;
+    int distance;
+} HeapNode;
+
+typedef struct {
+    HeapNode data[V];
+    int size;
+} MinHeap;
+
+void swap(HeapNode *a, HeapNode *b) {
+    HeapNode temp = *a;
+    *a = *b;
+    *b = temp;
+}
