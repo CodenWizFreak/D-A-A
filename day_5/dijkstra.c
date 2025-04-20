@@ -11,3 +11,21 @@ z  7   INF   6   INF   0
 
 
 */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <string.h>
+
+#define V 5
+#define INF_VALUE 99999
+
+typedef struct {
+    int vertex;
+    int weight;
+} Edge;
+
+typedef struct {
+    Edge edges[V];
+    int edge_count;
+} AdjList;
