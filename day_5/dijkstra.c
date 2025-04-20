@@ -154,4 +154,22 @@ void read_graph(const char *filename, AdjList adj[]) {
     fclose(file);
 }
 
+int main() {
+    AdjList adj[V];
+    read_graph("graph.txt", adj);
+
+    char src_char;
+    printf("Enter source vertex (s, t, x, y, z): ");
+    scanf(" %c", &src_char);
+    int source = src_char - 's';
+
+    if (source < 0 || source >= V) {
+        printf("Invalid source vertex.\n");
+        return 1;
+    }
+
+    dijkstra(adj, source);
+    return 0;
+}
+
    
