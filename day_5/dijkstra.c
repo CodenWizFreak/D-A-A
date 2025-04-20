@@ -45,3 +45,27 @@ void swap(HeapNode *a, HeapNode *b) {
     *a = *b;
     *b = temp;
 }
+
+void heapify_up(MinHeap *heap, int index) {
+    if (index && heap->data[index].distance < heap->data[(index - 1) / 2].distance) {
+        swap(&heap->data[index], &heap->data[(index - 1) / 2]);
+        heapify_up(heap, (index - 1) / 2);
+    }
+}
+
+void heapify_down(MinHeap *heap, int index) {
+    int smallest = index;
+    int left = 2*index + 1;
+    int right = 2*index + 2;
+
+    if (left < heap->size && heap->data[left].distance < heap->data[smallest].distance)
+        smallest = left;
+
+    if (right < heap->size && heap->data[right].distance < heap->data[smallest].distance)
+        smallest = right;
+
+    if (smallest != index) {
+        swap(&heap->data[index], &heap->data[smallest]);
+        heapify_down(heap, smallest);
+    }
+}
