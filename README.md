@@ -6,3 +6,4 @@
 - Day 3: Merge Sort
 - Day 4: Quick Sort
 - Day 5: Dijkstra's Algorithm
+- Day 6: Krushkal's Algorithm
