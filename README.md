@@ -7,3 +7,4 @@
 - Day 4: Quick Sort
 - Day 5: Dijkstra's Algorithm
 - Day 6: Krushkal's Algorithm
+- Day 7: Matrix Chain Multiplication
