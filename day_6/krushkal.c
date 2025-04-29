@@ -88,3 +88,27 @@ int main() {
         Edges[edgeCount].w = w;
         edgeCount++;
     }
+
+fclose(fp);
+
+    
+    qsort(Edges, edgeCount, sizeof(Edge), compareEdges);
+
+    
+    Edge* MST = (Edge*)malloc((n - 1) * sizeof(Edge));
+    int mstEdgeCount = 0;
+    int mstWeight = 0;
+
+    
+    for (int i = 0; i < edgeCount && mstEdgeCount < n - 1; i++) {
+        Edge currentEdge = Edges[i];
+        Node* setU = find_set(&nodes[currentEdge.u]);
+        Node* setV = find_set(&nodes[currentEdge.v]);
+
+        
+        if (setU != setV) {
+            MST[mstEdgeCount++] = currentEdge;
+            mstWeight += currentEdge.w;
+            Union(setU, setV);
+        }
+    }
