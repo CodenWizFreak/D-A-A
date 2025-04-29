@@ -1,5 +1,7 @@
-0 10 INF 5 INF
-INF 0 1 2 INF
-INF INF 0 INF 4
-INF 3 9 0 2
-7 INF 6 INF 0
+5
+s t 10
+s y 5
+t x 1
+t y 2
+x z 4
+y z 2
