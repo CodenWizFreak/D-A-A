@@ -137,22 +137,26 @@ void read_graph(const char *filename, AdjList adj[]) {
         exit(1);
     }
 
-    char word[10];
+    int n;
+    fscanf(file, "%d", &n); // number of vertices
     for (int i = 0; i < V; i++) {
         adj[i].edge_count = 0;
-        for (int j = 0; j < V; j++) {
-            fscanf(file, "%s", word);
-            int weight = (strcmp(word, "INF") == 0) ? INF_VALUE : atoi(word);
-            if (weight != INF_VALUE && i != j) {
-                adj[i].edges[adj[i].edge_count].vertex = j;
-                adj[i].edges[adj[i].edge_count].weight = weight;
-                adj[i].edge_count++;
-            }
-        }
+    }
+
+    char u, v;
+    int w;
+    while (fscanf(file, " %c %c %d", &u, &v, &w) == 3) {
+        int from = u - 's';
+        int to = v - 's';
+        // Directed graph: add only one direction
+        adj[from].edges[adj[from].edge_count].vertex = to;
+        adj[from].edges[adj[from].edge_count].weight = w;
+        adj[from].edge_count++;
     }
 
     fclose(file);
 }
+
 
 int main() {
     AdjList adj[V];
