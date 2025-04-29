@@ -17,3 +17,30 @@ i  ∞ ∞ 2 ∞ ∞ ∞ 6 7 0
 
 
 */
+
+#include<stdlib.h>
+#include<stdio.h>
+#include<limits.h>
+#include<string.h>
+#include<stdbool.h>
+
+typedef struct Node {
+    int data;
+    struct Node* p;
+    int rank;
+} Node;
+
+typedef struct Edge {
+    int u, v, w;
+} Edge;
+
+Node* find_set(Node* node) {
+    if (node->p != node)
+        node->p = find_set(node->p);
+    return node->p;
+}
+
+void make_set(Node* node) {
+    node->p = node;
+    node->rank = 0;
+}
