@@ -44,3 +44,23 @@ void make_set(Node* node) {
     node->p = node;
     node->rank = 0;
 }
+
+void Link(Node* node1, Node* node2) {
+    if (node1->rank > node2->rank)
+        node2->p = node1;
+    else {
+        node1->p = node2;
+        if (node1->rank == node2->rank)
+            node2->rank++;
+    }
+}
+
+void Union(Node* node1, Node* node2) {
+    Link(find_set(node1), find_set(node2));
+}
+
+int compareEdges(const void* a, const void* b) {
+    Edge* edgeA = (Edge*)a;
+    Edge* edgeB = (Edge*)b;
+    return edgeA->w - edgeB->w;
+}
