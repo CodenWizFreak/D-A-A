@@ -112,3 +112,16 @@ fclose(fp);
             Union(setU, setV);
         }
     }
+
+printf("Edges in the MST:\n");
+    for (int i = 0; i < mstEdgeCount; i++) {
+        printf("%c - %c: %d\n", MST[i].u + 'a', MST[i].v + 'a', MST[i].w);
+    }
+    printf("Total weight of MST: %d\n", mstWeight);
+
+    free(nodes);
+    free(Edges);
+    free(MST);
+
+    return 0;
+}
