@@ -64,3 +64,27 @@ int compareEdges(const void* a, const void* b) {
     Edge* edgeB = (Edge*)b;
     return edgeA->w - edgeB->w;
 }
+
+int main() {
+    int n, edgeCount = 0;
+    FILE *fp;
+    fp = fopen("input_kruskal.txt", "r");
+
+    fscanf(fp, "%d", &n);
+
+    Node* nodes = (Node*)malloc(n * sizeof(Node));
+    for (int i = 0; i < n; i++) {
+        nodes[i].data = i;
+        make_set(&nodes[i]);
+    }
+
+    Edge* Edges = (Edge*)malloc(2 * n * sizeof(Edge));
+    char u, v;
+    int w;
+
+    while (fscanf(fp, " %c %c %d", &u, &v, &w) != EOF) {
+        Edges[edgeCount].u = u - 'a'; 
+        Edges[edgeCount].v = v - 'a';
+        Edges[edgeCount].w = w;
+        edgeCount++;
+    }
