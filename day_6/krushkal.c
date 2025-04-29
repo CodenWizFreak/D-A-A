@@ -89,7 +89,7 @@ int main() {
         edgeCount++;
     }
 
-fclose(fp);
+    fclose(fp);
 
     
     qsort(Edges, edgeCount, sizeof(Edge), compareEdges);
@@ -113,7 +113,7 @@ fclose(fp);
         }
     }
 
-printf("Edges in the MST:\n");
+    printf("Edges in the MST:\n");
     for (int i = 0; i < mstEdgeCount; i++) {
         printf("%c - %c: %d\n", MST[i].u + 'a', MST[i].v + 'a', MST[i].w);
     }
