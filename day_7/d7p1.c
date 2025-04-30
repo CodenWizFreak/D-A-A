@@ -46,3 +46,14 @@ int main() {
         return 1;
     }
 
+int p[MAX];
+    int n = 0;
+    while (fscanf(file, "%d", &p[n]) == 1) {
+        n++;
+    }
+    fclose(file);
+
+    if (n < 2) {
+        printf("Invalid input: Need at least 2 numbers.\n");
+        return 1;
+    }
