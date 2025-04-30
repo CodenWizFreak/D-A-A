@@ -39,4 +39,10 @@ void matrixChainOrder(int p[], int n) {
     printOptimalParens(s, 1, n - 1);
     printf("\n");
 }
+int main() {
+    FILE *file = fopen("dimensions.txt", "r");
+    if (file == NULL) {
+        printf("Could not open file.\n");
+        return 1;
+    }
 
