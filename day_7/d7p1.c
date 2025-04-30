@@ -1,3 +1,8 @@
+/*
+WAP to multiply a chain of matrices optimally using iterative version of Dynamic Programming approach. Check your program for the sequence of 4 
+matrices <M1, M2, M3, M4> whose sequence of dimensions is <13, 5, 89, 3, 34>.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
