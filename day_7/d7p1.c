@@ -30,3 +30,13 @@ void matrixChainOrder(int p[], int n) {
                     m[i][j] = q;
                     s[i][j] = k;
                 }
+            }
+        }
+    }
+
+    printf("Minimum number of multiplications is %d\n", m[1][n - 1]);
+    printf("Optimal parenthesization is: ");
+    printOptimalParens(s, 1, n - 1);
+    printf("\n");
+}
+
