@@ -14,9 +14,20 @@ void computeLPSArray(char* pat, int M, int* lps) {
     lps[0] = 0; // lps[0] is always 0
     int i = 1;
 
-while (i < M) {
+    while (i < M) {
         if (pat[i] == pat[len]) {
             len++;
             lps[i] = len;
             i++;
         }
+        else {
+            if (len != 0) {
+                len = lps[len - 1];
+            }
+            else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+}
