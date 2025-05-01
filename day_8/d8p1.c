@@ -47,3 +47,18 @@ void KMPSearch(char* pat, char* txt) {
             j++;
             i++;
         }
+
+        if (j == M) {
+            printf("Pattern found at index %d\n", i - j);
+            j = lps[j - 1];
+        }
+
+        // mismatch after j matches
+        else if (i < N && pat[j] != txt[i]) {
+            if (j != 0)
+                j = lps[j - 1];
+            else
+                i++;
+        }
+    }
+}
