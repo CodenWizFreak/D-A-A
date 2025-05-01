@@ -62,3 +62,12 @@ void KMPSearch(char* pat, char* txt) {
         }
     }
 }
+
+// Main function
+int main() {
+    char txt[] = "bacbababacababaac";
+    char pat[] = "ababaca";
+
+    KMPSearch(pat, txt);
+    return 0;
+}
