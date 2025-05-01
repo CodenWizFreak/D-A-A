@@ -39,3 +39,11 @@ void KMPSearch(char* pat, char* txt) {
 
     int lps[M];
     computeLPSArray(pat, M, lps);
+
+    int i = 0; // index for txt[]
+    int j = 0; // index for pat[]
+    while (i < N) {
+        if (pat[j] == txt[i]) {
+            j++;
+            i++;
+        }
