@@ -31,3 +31,11 @@ void computeLPSArray(char* pat, int M, int* lps) {
         }
     }
 }
+
+// KMP search function
+void KMPSearch(char* pat, char* txt) {
+    int M = strlen(pat);
+    int N = strlen(txt);
+
+    int lps[M];
+    computeLPSArray(pat, M, lps);
