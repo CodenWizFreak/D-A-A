@@ -8,3 +8,4 @@
 - Day 5: Dijkstra's Algorithm
 - Day 6: Krushkal's Algorithm
 - Day 7: Matrix Chain Multiplication
+- Day 8: Knuth Morris Pratt Algorithm
