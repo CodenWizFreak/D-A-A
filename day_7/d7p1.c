@@ -62,6 +62,25 @@ int main() {
         printf("Invalid input: Need at least 2 numbers.\n");
         return 1;
     }
+
+    //If direct user input is asked, do this part
+    
+    /*
+    
+    int n,i;
+    printf("Enter no. of matrices: \n");
+    scanf("%d",&n);
+    if (n < 2)
+    {
+        printf("Need atleast two matrices!\n");
+        return 1;
+    }
+    int p[n+1];
+    printf("Enter matrix dimension array\n");
+    for(i=0;i<=n;i++)
+        scanf("%d",&p[i]);
+    */
+    
     matrixChainOrder(p, n);
     return 0;
 }
