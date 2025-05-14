@@ -39,3 +39,31 @@ void unionSet(int x, int y) {
         rank[xroot]++;
     }
 }
+
+int main() {
+    int edgeCount;
+    char u[3], v[3];
+
+    for (int i = 0; i < MAX; i++) {
+        parent[i] = i;
+        rank[i] = 0;
+    }
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edgeCount);
+
+    printf("Enter %d edges (like a b):\n", edgeCount);
+    for (int i = 0; i < edgeCount; i++) {
+        scanf("%s %s", u, v);
+        int uIdx = findVertexIndex(u);
+        int vIdx = findVertexIndex(v);
+        unionSet(uIdx, vIdx);
+    }
+
+    printf("\nConnected components:\n");
+    for (int i = 0; i < vertexCount; i++) {
+        printf("Vertex %s belongs to component %d\n", vertices[i], find(i));
+    }
+
+    return 0;
+}
