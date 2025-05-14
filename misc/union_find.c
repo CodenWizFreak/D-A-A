@@ -22,3 +22,20 @@ int find(int x) {
         parent[x] = find(parent[x]);  // Path compression
     return parent[x];
 }
+
+void unionSet(int x, int y) {
+    int xroot = find(x);
+    int yroot = find(y);
+
+    if (xroot == yroot)
+        return;
+
+    if (rank[xroot] < rank[yroot])
+        parent[xroot] = yroot;
+    else if (rank[xroot] > rank[yroot])
+        parent[yroot] = xroot;
+    else {
+        parent[yroot] = xroot;
+        rank[xroot]++;
+    }
+}
