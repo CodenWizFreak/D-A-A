@@ -16,3 +16,9 @@ int findVertexIndex(char* v) {
     strcpy(vertices[vertexCount], v);
     return vertexCount++;
 }
+
+int find(int x) {
+    if (parent[x] != x)
+        parent[x] = find(parent[x]);  // Path compression
+    return parent[x];
+}
