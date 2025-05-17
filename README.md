@@ -13,8 +13,9 @@
          2. Ford-Fulkerson Algorithm
          3. Floyd-Warshall Algorithm
          4. Bellman-Ford Algorithm
-         5. Prim's Algorithm
+         5. Prim's Algorithm (Priority Queue & Min Heap both)
          6. 0/1 Knapsack Problem
          7. Huffman Coding using Greedy Approach
          8. Heapsort
          9. Queue using Stack
+        10. Longest Common Subsequence (LCS)
