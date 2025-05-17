@@ -8,6 +8,7 @@ int parent[MAX], rank[MAX];
 char vertices[MAX][3];
 int vertexCount = 0;
 
+// Maps a vertex name to an index, or creates it if not found
 int findVertexIndex(char* v) {
     for (int i = 0; i < vertexCount; i++) {
         if (strcmp(vertices[i], v) == 0)
@@ -17,12 +18,14 @@ int findVertexIndex(char* v) {
     return vertexCount++;
 }
 
+// Find operation with path compression
 int find(int x) {
     if (parent[x] != x)
-        parent[x] = find(parent[x]);  // Path compression
+        parent[x] = find(parent[x]);
     return parent[x];
 }
 
+// Union by rank
 void unionSet(int x, int y) {
     int xroot = find(x);
     int yroot = find(y);
@@ -60,9 +63,24 @@ int main() {
         unionSet(uIdx, vIdx);
     }
 
+    // Map root IDs to compact component numbers
+    int componentMap[MAX];
+    for (int i = 0; i < MAX; i++) {
+        componentMap[i] = -1;
+    }
+
+    int compCount = 0;
+    for (int i = 0; i < vertexCount; i++) {
+        int root = find(i);
+        if (componentMap[root] == -1) {
+            componentMap[root] = compCount++;
+        }
+    }
+
     printf("\nConnected components:\n");
     for (int i = 0; i < vertexCount; i++) {
-        printf("Vertex %s belongs to component %d\n", vertices[i], find(i));
+        int root = find(i);
+        printf("Vertex %s belongs to component %d\n", vertices[i], componentMap[root]);
     }
 
     return 0;
