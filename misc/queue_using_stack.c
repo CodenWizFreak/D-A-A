@@ -45,3 +45,9 @@ void initQueue(Queue* q) {
     initStack(&q->stack1);
     initStack(&q->stack2);
 }
+
+void enqueue(Queue* q, int val) {
+    push(&q->stack1, val);
+    printf("Enqueued %d\n", val);
+}
+
