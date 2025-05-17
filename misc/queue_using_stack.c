@@ -34,6 +34,21 @@ Enter choice: 1
 Enter value to enqueue: 69
 Enqueued 69
 
+Queue Operations using Stacks:
+1. Enqueue
+2. Dequeue
+3. Print Queue
+4. Exit
+Enter choice: 3
+Queue elements (front to rear): 5 6 69 
+
+Queue Operations using Stacks:
+1. Enqueue
+2. Dequeue
+3. Print Queue
+4. Exit
+Enter choice: 2
+Dequeued 5
 */
 
 #include <stdio.h>
