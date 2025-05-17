@@ -10,4 +10,8 @@
 - Day 7: Matrix Chain Multiplication
 - Day 8: Knuth Morris Pratt Algorithm
 - Misc : 1. Union-Find Algorithm
+         2. Ford-Fulkerson Algorithm
+         3. Floyd-Warshall Algorithm
+         4. Bellman-Ford Algorithm
+         5. Prim's Algorithm
          
