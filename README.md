@@ -16,4 +16,5 @@
          5. Prim's Algorithm
          6. 0/1 Knapsack Problem
          7. Huffman Coding using Greedy Approach
-         
+         8. Heapsort
+         9. Queue using Stack
