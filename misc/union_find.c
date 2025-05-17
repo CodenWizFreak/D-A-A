@@ -1,3 +1,43 @@
+/*
+Enter number of edges: 12
+Enter 12 edges (like a b):
+a b
+a i
+i j
+b j
+c d
+c e
+c g
+e g
+d f
+d h
+f h
+e f
+
+Connected components:
+Vertex a belongs to component 0
+Vertex b belongs to component 0
+Vertex i belongs to component 0
+Vertex j belongs to component 0
+Vertex c belongs to component 1
+Vertex d belongs to component 1
+Vertex e belongs to component 1
+Vertex g belongs to component 1
+Vertex f belongs to component 1
+Vertex h belongs to component 1
+
+    a ----------------- b
+    |                   |
+    |   c --------- d   |
+    |   | \       / |   |
+    |   |  e --- f  |   |
+    |   | /       \ |   |
+    |   g --------- h   |
+    |                   |
+    i ----------------- j
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
