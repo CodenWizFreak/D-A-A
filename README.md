@@ -14,4 +14,6 @@
          3. Floyd-Warshall Algorithm
          4. Bellman-Ford Algorithm
          5. Prim's Algorithm
+         6. 0/1 Knapsack Problem
+         7. Huffman Coding using Greedy Approach
          
