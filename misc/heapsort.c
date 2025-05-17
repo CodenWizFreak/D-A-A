@@ -146,3 +146,15 @@ int main() {
                 printf("Average time: %.8f s\n", avgTime);
                 break;
             }
+
+            case 5:
+                printf("Exiting.\n");
+                return 0;
+
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+
+    return 0;
+}
