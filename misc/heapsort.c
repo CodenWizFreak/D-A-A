@@ -47,6 +47,15 @@ Best case time: 0.00000000 s | Input: 1 2 4 6 16 23 9
 Worst case time: 0.00002900 s | Input: 4 2 16 23 1 9 6 
 Average time: 0.00000073 s
 
+===== HEAPSORT MENU =====
+1. Enter array
+2. Run Heapsort
+3. Run all permutations and time analysis
+4. Show best, worst, and average case timings
+5. Exit
+Enter your choice: 5
+Exiting.
+
 */
 
 #include <stdio.h>
