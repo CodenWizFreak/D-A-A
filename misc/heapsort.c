@@ -1,5 +1,22 @@
 /*
 
+===== HEAPSORT MENU =====
+1. Enter array
+2. Run Heapsort
+3. Run all permutations and time analysis
+4. Show best, worst, and average case timings
+5. Exit
+Enter your choice: 1
+Enter number of elements (<=8 recommended): 7
+Enter 7 elements:
+6
+2
+9
+16
+1
+4
+23
+
 */
 
 #include <stdio.h>
