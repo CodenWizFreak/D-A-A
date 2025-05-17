@@ -1,3 +1,10 @@
+/*
+Enter first string: abcdefghibcdefghiabcdhgin
+Enter second string: ginbcdefh
+Length of Longest Common Subsequence: 8
+Longest Common Subsequence: gibcdefh  
+*/
+
 #include <stdio.h>
 #include <string.h>
 
