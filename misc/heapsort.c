@@ -17,6 +17,15 @@ Enter 7 elements:
 4
 23
 
+===== HEAPSORT MENU =====
+1. Enter array
+2. Run Heapsort
+3. Run all permutations and time analysis
+4. Show best, worst, and average case timings
+5. Exit
+Enter your choice: 2
+Sorted array: 1 2 4 6 9 16 23 
+
 */
 
 #include <stdio.h>
