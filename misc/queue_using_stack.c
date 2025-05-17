@@ -40,3 +40,8 @@ typedef struct Queue {
     Stack stack1;
     Stack stack2;
 } Queue;
+
+void initQueue(Queue* q) {
+    initStack(&q->stack1);
+    initStack(&q->stack2);
+}
