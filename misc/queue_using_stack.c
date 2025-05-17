@@ -84,3 +84,18 @@ void printQueue(Queue* q) {
 
     printf("\n");
 }
+
+int main() {
+    Queue q;
+    initQueue(&q);
+
+    int choice, val;
+
+    while (1) {
+        printf("\nQueue Operations using Stacks:\n");
+        printf("1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Print Queue\n");
+        printf("4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
