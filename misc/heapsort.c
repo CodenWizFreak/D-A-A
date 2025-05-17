@@ -39,3 +39,13 @@ void heapify(int arr[], int size, int i) {
         heapify(arr, size, largest);
     }
 }
+
+// Heapsort
+void heapSort(int arr[], int size) {
+    for (int i = size / 2 - 1; i >= 0; i--)
+        heapify(arr, size, i);
+    for (int i = size - 1; i >= 0; i--) {
+        swap(&arr[0], &arr[i]);
+        heapify(arr, i, 0);
+    }
+}
