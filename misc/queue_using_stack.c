@@ -99,3 +99,26 @@ int main() {
         printf("4. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value to enqueue: ");
+                scanf("%d", &val);
+                enqueue(&q, val);
+                break;
+            case 2:
+                dequeue(&q);
+                break;
+            case 3:
+                printQueue(&q);
+                break;
+            case 4:
+                printf("Exiting...\n");
+                exit(0);
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    }
+
+    return 0;
+}
