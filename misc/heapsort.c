@@ -49,3 +49,35 @@ void heapSort(int arr[], int size) {
         heapify(arr, i, 0);
     }
 }
+
+// Permutation & Timing
+void permuteAndTime(int *a, int l, int r) {
+    if (l == r) {
+        int temp[MAX];
+        copyArray(temp, a, n);
+
+        clock_t start = clock();
+        heapSort(temp, n);
+        clock_t end = clock();
+
+        double timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
+
+        if (timeTaken < bestTime) {
+            bestTime = timeTaken;
+            copyArray(bestCase, a, n);
+        }
+
+        if (timeTaken > worstTime) {
+            worstTime = timeTaken;
+            copyArray(worstCase, a, n);
+        }
+
+        totalTime += timeTaken;
+    } else {
+        for (int i = l; i <= r; i++) {
+            swap(&a[l], &a[i]);
+            permuteAndTime(a, l + 1, r);
+            swap(&a[l], &a[i]); // backtrack
+        }
+    }
+}
