@@ -9,3 +9,5 @@
 - Day 6: Krushkal's Algorithm
 - Day 7: Matrix Chain Multiplication
 - Day 8: Knuth Morris Pratt Algorithm
+- Misc : 1. Union-Find Algorithm
+         
