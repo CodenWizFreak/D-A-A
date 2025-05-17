@@ -35,3 +35,8 @@ int pop(Stack* s) {
     }
     return s->data[(s->top)--];
 }
+
+typedef struct Queue {
+    Stack stack1;
+    Stack stack2;
+} Queue;
