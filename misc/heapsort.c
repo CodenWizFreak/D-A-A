@@ -87,3 +87,62 @@ int factorial(int num) {
     for (int i = 2; i <= num; i++) fact *= i;
     return fact;
 }
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("\n===== HEAPSORT MENU =====\n");
+        printf("1. Enter array\n");
+        printf("2. Run Heapsort\n");
+        printf("3. Run all permutations and time analysis\n");
+        printf("4. Show best, worst, and average case timings\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter number of elements (<=8 recommended): ");
+                scanf("%d", &n);
+                if (n > MAX) {
+                    printf("Limit exceeded. Try <= %d.\n", MAX);
+                    break;
+                }
+                printf("Enter %d elements:\n", n);
+                for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+                break;
+
+            case 2:
+                heapSort(arr, n);
+                printf("Sorted array: ");
+                printArray(arr, n);
+                break;
+
+            case 3: {
+                bestTime = DBL_MAX;
+                worstTime = 0;
+                totalTime = 0;
+
+                clock_t start = clock();
+                permuteAndTime(arr, 0, n - 1);
+                clock_t end = clock();
+
+                printf("Timing complete for %d permutations.\n", factorial(n));
+                printf("Total time: %.4f s\n", (double)(end - start) / CLOCKS_PER_SEC);
+                break;
+            }
+
+            case 4: {
+                int totalPerms = factorial(n);
+                double avgTime = totalTime / totalPerms;
+
+                printf("Best case time: %.8f s | Input: ", bestTime);
+                printArray(bestCase, n);
+
+                printf("Worst case time: %.8f s | Input: ", worstTime);
+                printArray(worstCase, n);
+
+                printf("Average time: %.8f s\n", avgTime);
+                break;
+            }
