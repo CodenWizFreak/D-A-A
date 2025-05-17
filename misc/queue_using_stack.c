@@ -51,3 +51,15 @@ void enqueue(Queue* q, int val) {
     printf("Enqueued %d\n", val);
 }
 
+int dequeue(Queue* q) {
+    if (isEmpty(&q->stack2)) {
+        while (!isEmpty(&q->stack1)) {
+            int val = pop(&q->stack1);
+            push(&q->stack2, val);
+        }
+    }
+    int val = pop(&q->stack2);
+    if (val != -1)
+        printf("Dequeued %d\n", val);
+    return val;
+}
