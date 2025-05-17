@@ -26,6 +26,16 @@ Enter 7 elements:
 Enter your choice: 2
 Sorted array: 1 2 4 6 9 16 23 
 
+===== HEAPSORT MENU =====
+1. Enter array
+2. Run Heapsort
+3. Run all permutations and time analysis
+4. Show best, worst, and average case timings
+5. Exit
+Enter your choice: 3
+Timing complete for 5040 permutations.
+Total time: 0.0067 s
+
 */
 
 #include <stdio.h>
