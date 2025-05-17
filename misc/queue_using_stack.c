@@ -27,3 +27,11 @@ void push(Stack* s, int val) {
     }
     s->data[++(s->top)] = val;
 }
+
+int pop(Stack* s) {
+    if (isEmpty(s)) {
+        printf("Stack Underflow\n");
+        return -1; // error code
+    }
+    return s->data[(s->top)--];
+}
