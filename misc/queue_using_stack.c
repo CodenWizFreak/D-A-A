@@ -63,3 +63,24 @@ int dequeue(Queue* q) {
         printf("Dequeued %d\n", val);
     return val;
 }
+
+void printQueue(Queue* q) {
+    if (isEmpty(&q->stack1) && isEmpty(&q->stack2)) {
+        printf("Queue is empty\n");
+        return;
+    }
+
+    printf("Queue elements (front to rear): ");
+
+    // Print elements in stack2 from top to bottom
+    for (int i = q->stack2.top; i >= 0; i--) {
+        printf("%d ", q->stack2.data[i]);
+    }
+
+    // Print elements in stack1 from bottom to top
+    for (int i = 0; i <= q->stack1.top; i++) {
+        printf("%d ", q->stack1.data[i]);
+    }
+
+    printf("\n");
+}
