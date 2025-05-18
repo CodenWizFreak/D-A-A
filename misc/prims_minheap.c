@@ -63,3 +63,17 @@ HeapNode heapPop(MinHeap *h){
     siftDown(h,0);
     return root;
 }
+
+int heapEmpty(MinHeap *h){ return h->size==0; }
+
+/* ---------- global graph ---------- */
+Vertex g[MAXV];
+int V=0, E=0;
+
+int findVertex(const char *name){
+    for(int i=0;i<V;i++) if(strcmp(g[i].name,name)==0) return i;
+    strcpy(g[V].name,name); g[V].adj=NULL; return V++;
+}
+void addEdge(int u,int v,int w){
+    Edge *e=malloc(sizeof(Edge)); e->to=v; e->w=w; e->next=g[u].adj; g[u].adj=e;
+}
