@@ -92,3 +92,33 @@ void loadGraph(const char *file){
     if(V!=declaredV)
         fprintf(stderr,"Warning: first line said %d vertices, but %d unique labels found.\n",declaredV,V);
 }
+
+/* ---------- Prim’s algorithm (lazy) ---------- */
+void prim(int start){
+    int inMST[MAXV]={0}, parent[MAXV], cost[MAXV];
+    for(int i=0;i<V;i++){ cost[i]=INT_MAX; parent[i]=-1; }
+    MinHeap *h=newHeap(E*2+1);
+    heapPush(h,start,0); cost[start]=0;
+
+    long long total=0;
+    while(!heapEmpty(h)){
+        HeapNode n=heapPop(h);
+        int u=n.v;
+        if(inMST[u]) continue;          /* skip stale duplicates */
+        inMST[u]=1; total+=n.key;
+
+        for(Edge *e=g[u].adj;e;e=e->next){
+            int v=e->to, w=e->w;
+            if(!inMST[v] && w < cost[v]){
+                cost[v]=w; parent[v]=u;
+                heapPush(h,v,w);        /* push duplicate instead of decrease-key */
+            }
+        }
+    }
+
+    printf("Edges in MST:\n");
+    for(int v=0; v<V; v++)
+        if(parent[v]!=-1)
+            printf("  %s — %s  (%d)\n", g[parent[v]].name, g[v].name, cost[v]);
+    printf("Total weight = %lld\n", total);
+}
