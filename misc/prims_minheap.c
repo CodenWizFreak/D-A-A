@@ -122,3 +122,9 @@ void prim(int start){
             printf("  %s — %s  (%d)\n", g[parent[v]].name, g[v].name, cost[v]);
     printf("Total weight = %lld\n", total);
 }
+
+int main(void){
+    loadGraph("graph.txt");
+    prim(0);                 /* start from vertex 0 */
+    return 0;
+}
