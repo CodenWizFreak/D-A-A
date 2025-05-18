@@ -36,3 +36,18 @@ MinHeap *newHeap(int cap) {
     return h;
 }
 void swap(HeapNode *x, HeapNode *y){ HeapNode t=*x;*x=*y;*y=t; }
+
+void siftUp(MinHeap *h,int i){
+    while(i && h->a[i].key < h->a[(i-1)/2].key){
+        swap(&h->a[i],&h->a[(i-1)/2]); i=(i-1)/2;
+    }
+}
+void siftDown(MinHeap *h,int i){
+    while(1){
+        int l=i*2+1, r=i*2+2, s=i;
+        if(l<h->size && h->a[l].key < h->a[s].key) s=l;
+        if(r<h->size && h->a[r].key < h->a[s].key) s=r;
+        if(s==i) break;
+        swap(&h->a[i],&h->a[s]); i=s;
+    }
+}
