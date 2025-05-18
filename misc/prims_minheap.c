@@ -86,3 +86,27 @@ void load(const char *fn){
     }
     fclose(fp);
 }
+
+/* ---------- Prim (with decrease-key) ---------- */
+void prim(int s){
+    int parent[MAXV], key[MAXV], inMST[MAXV]={0};
+    for(int i=0;i<V;i++){ key[i]=INT_MAX; parent[i]=-1; }
+    key[s]=0;
+    MinHeap *h=heapCreate(V,key);
+    for(int v=0;v<V;v++) heapInsert(h,v);
+
+    long long total=0;
+    while(!heapEmpty(h)){
+        int u=heapExtractMin(h);
+        inMST[u]=1; total+=key[u];
+        for(Edge*e=g[u].adj;e;e=e->next){
+            int v=e->to,w=e->w;
+            if(!inMST[v] && w<key[v])
+                heapDecreaseKey(h,v,w), parent[v]=u;
+        }
+    }
+    printf("Edges in MST:\n");
+    for(int v=0;v<V;v++) if(parent[v]!=-1)
+        printf("  %s — %s  (%d)\n",g[parent[v]].name,g[v].name,key[v]);
+    printf("Total weight = %lld\n",total);
+}
