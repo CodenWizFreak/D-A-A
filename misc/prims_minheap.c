@@ -110,3 +110,9 @@ void prim(int s){
         printf("  %s — %s  (%d)\n",g[parent[v]].name,g[v].name,key[v]);
     printf("Total weight = %lld\n",total);
 }
+
+int main(void){
+    load("graph.txt");
+    prim(0);
+    return 0;
+}
