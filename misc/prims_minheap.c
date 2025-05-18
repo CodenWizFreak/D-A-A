@@ -26,3 +26,23 @@ MinHeap *heapCreate(int n,int *key){
     for(int i=0;i<n;i++) mh->pos[i]=-1;
     return mh;
 }
+
+void swap(MinHeap *mh,int i,int j){
+    int vi=mh->h[i], vj=mh->h[j];
+    mh->h[i]=vj; mh->h[j]=vi;
+    mh->pos[vi]=j; mh->pos[vj]=i;
+}
+void siftUp(MinHeap *mh,int i){
+    while(i&&mh->key[mh->h[i]]<mh->key[mh->h[(i-1)/2]]){
+        swap(mh,i,(i-1)/2); i=(i-1)/2;
+    }
+}
+void siftDown(MinHeap *mh,int i){
+    while(1){
+        int l=i*2+1,r=i*2+2,s=i;
+        if(l<mh->size && mh->key[mh->h[l]]<mh->key[mh->h[s]]) s=l;
+        if(r<mh->size && mh->key[mh->h[r]]<mh->key[mh->h[s]]) s=r;
+        if(s==i) break;
+        swap(mh,i,s); i=s;
+    }
+}
