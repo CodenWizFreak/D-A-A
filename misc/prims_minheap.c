@@ -112,7 +112,7 @@ void prim(int s){
 }
 
 int main(void){
-    load("graph.txt");
+    load("graphprim.txt");
     prim(0);
     return 0;
 }
