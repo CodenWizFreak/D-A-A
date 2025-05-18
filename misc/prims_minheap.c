@@ -17,3 +17,12 @@ typedef struct {
     int size, cap;
 } MinHeap;
 
+MinHeap *heapCreate(int n,int *key){
+    MinHeap *mh=malloc(sizeof(MinHeap));
+    mh->pos=malloc(n*sizeof(int));
+    mh->h  =malloc(n*sizeof(int));
+    mh->key=key;
+    mh->size=0; mh->cap=n;
+    for(int i=0;i<n;i++) mh->pos[i]=-1;
+    return mh;
+}
