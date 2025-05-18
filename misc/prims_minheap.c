@@ -64,3 +64,25 @@ void heapDecreaseKey(MinHeap *mh,int v,int newKey){
     siftUp(mh,mh->pos[v]);
 }
 int heapEmpty(MinHeap *mh){ return mh->size==0; }
+
+/* ---------- global graph ---------- */
+Vertex g[MAXV]; int V=0,E=0;
+
+int idx(const char *nm){
+    for(int i=0;i<V;i++) if(!strcmp(g[i].name,nm)) return i;
+    strcpy(g[V].name,nm); g[V].adj=NULL; return V++;
+}
+void addEdge(int u,int v,int w){
+    Edge *e=malloc(sizeof(Edge)); e->to=v; e->w=w; e->next=g[u].adj; g[u].adj=e;
+}
+
+void load(const char *fn){
+    FILE *fp=fopen(fn,"r"); if(!fp){perror(fn);exit(1);}
+    int declared; if(fscanf(fp,"%d",&declared)!=1){fprintf(stderr,"Bad file\n");exit(1);}
+    char a[MAXNAME],b[MAXNAME]; int w;
+    while(fscanf(fp,"%s %s %d",a,b,&w)==3){
+        int u=idx(a), v=idx(b);
+        addEdge(u,v,w); addEdge(v,u,w); ++E;
+    }
+    fclose(fp);
+}
