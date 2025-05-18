@@ -77,3 +77,18 @@ int findVertex(const char *name){
 void addEdge(int u,int v,int w){
     Edge *e=malloc(sizeof(Edge)); e->to=v; e->w=w; e->next=g[u].adj; g[u].adj=e;
 }
+
+void loadGraph(const char *file){
+    FILE *fp=fopen(file,"r");
+    if(!fp){ perror("graph.txt"); exit(1); }
+    int declaredV; if(fscanf(fp,"%d",&declaredV)!=1){ fprintf(stderr,"Bad file\n"); exit(1); }
+    char s1[MAXNAME], s2[MAXNAME]; int w;
+    while(fscanf(fp,"%s %s %d",s1,s2,&w)==3){
+        int u=findVertex(s1), v=findVertex(s2);
+        addEdge(u,v,w); addEdge(v,u,w);
+        ++E;
+    }
+    fclose(fp);
+    if(V!=declaredV)
+        fprintf(stderr,"Warning: first line said %d vertices, but %d unique labels found.\n",declaredV,V);
+}
