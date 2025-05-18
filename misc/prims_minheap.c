@@ -124,7 +124,7 @@ void prim(int start){
 }
 
 int main(void){
-    loadGraph("graph.txt");
+    loadGraph("graphprim.txt");
     prim(0);                 /* start from vertex 0 */
     return 0;
 }
