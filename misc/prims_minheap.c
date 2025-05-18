@@ -46,3 +46,21 @@ void siftDown(MinHeap *mh,int i){
         swap(mh,i,s); i=s;
     }
 }
+
+void heapInsert(MinHeap *mh,int v){
+    mh->h[mh->size]=v; mh->pos[v]=mh->size;
+    siftUp(mh,mh->size++);
+}
+int heapExtractMin(MinHeap *mh){
+    int v=mh->h[0];
+    mh->pos[v]=-1;
+    mh->h[0]=mh->h[--mh->size];
+    mh->pos[mh->h[0]]=0;
+    siftDown(mh,0);
+    return v;
+}
+void heapDecreaseKey(MinHeap *mh,int v,int newKey){
+    mh->key[v]=newKey;
+    siftUp(mh,mh->pos[v]);
+}
+int heapEmpty(MinHeap *mh){ return mh->size==0; }
