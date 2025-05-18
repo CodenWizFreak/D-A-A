@@ -51,3 +51,15 @@ void siftDown(MinHeap *h,int i){
         swap(&h->a[i],&h->a[s]); i=s;
     }
 }
+
+void heapPush(MinHeap *h,int v,int key){
+    if(h->size==h->cap){ h->cap*=2; h->a=realloc(h->a,h->cap*sizeof(HeapNode)); }
+    h->a[h->size]=(HeapNode){v,key};
+    siftUp(h,h->size++);
+}
+HeapNode heapPop(MinHeap *h){
+    HeapNode root=h->a[0];
+    h->a[0]=h->a[--h->size];
+    siftDown(h,0);
+    return root;
+}
