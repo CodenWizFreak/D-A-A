@@ -33,4 +33,11 @@ float fractionalKnapsack(struct Item items[], int n, int capacity) {
         if (items[i].weight <= capacity) {
             capacity -= items[i].weight;
             totalProfit += items[i].profit;
+        } else {
+            totalProfit += items[i].profit * ((float)capacity / items[i].weight);
+            capacity = 0;
         }
+    }
+
+    return totalProfit;
+}
