@@ -53,3 +53,12 @@ int main() {
         scanf("%d %d", &items[i].profit, &items[i].weight);
         items[i].ratio = (float)items[i].profit / items[i].weight;
     }
+
+    printf("Enter knapsack capacity: ");
+    scanf("%d", &capacity);
+
+    float maxProfit = fractionalKnapsack(items, n, capacity);
+    printf("Maximum profit: %.2f\n", maxProfit);
+
+    return 0;
+}
