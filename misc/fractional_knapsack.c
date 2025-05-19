@@ -41,3 +41,15 @@ float fractionalKnapsack(struct Item items[], int n, int capacity) {
 
     return totalProfit;
 }
+
+int main() {
+    int n, capacity;
+    printf("Enter number of items: ");
+    scanf("%d", &n);
+
+    struct Item items[n];
+    printf("Enter profit and weight for each item:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d %d", &items[i].profit, &items[i].weight);
+        items[i].ratio = (float)items[i].profit / items[i].weight;
+    }
