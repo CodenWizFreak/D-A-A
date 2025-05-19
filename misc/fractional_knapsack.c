@@ -24,3 +24,13 @@ void sortItems(struct Item items[], int n) {
         }
     }
 }
+
+float fractionalKnapsack(struct Item items[], int n, int capacity) {
+    sortItems(items, n);
+
+    float totalProfit = 0.0;
+    for (int i = 0; i < n && capacity > 0; i++) {
+        if (items[i].weight <= capacity) {
+            capacity -= items[i].weight;
+            totalProfit += items[i].profit;
+        }
