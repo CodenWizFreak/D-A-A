@@ -1,3 +1,18 @@
+/*
+
+Enter number of items: 3
+Enter profit and weight for each item:
+60 10
+100 20
+120 30
+Enter knapsack capacity: 50
+
+Maximum profit: 240.00
+
+
+*/    
+
+
 #include <stdio.h>
 
 struct Item {
