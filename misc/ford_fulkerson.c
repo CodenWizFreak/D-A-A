@@ -25,6 +25,7 @@ int bfs(int rGraph[MAX][MAX], int s, int t, int parent[], int V) {
 
     return visited[t];
 }
+
 int fordFulkerson(int graph[MAX][MAX], int s, int t, int V) {
     int u, v;
     int rGraph[MAX][MAX];
@@ -52,4 +53,8 @@ int fordFulkerson(int graph[MAX][MAX], int s, int t, int V) {
     }
 
     return max_flow;
+}
+
+int charToIndex(char c) {
+    return c - 'a';
 }
