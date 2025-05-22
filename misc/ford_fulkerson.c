@@ -58,3 +58,10 @@ int fordFulkerson(int graph[MAX][MAX], int s, int t, int V) {
 int charToIndex(char c) {
     return c - 'a';
 }
+
+int main() {
+    FILE *file = fopen("fdf.txt", "r");
+    if (!file) {
+        printf("Error opening fdf.txt\n");
+        return 1;
+    }
