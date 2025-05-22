@@ -45,3 +45,14 @@ void floydWarshall(int dist[MAX][MAX]) {
                     dist[i][k] + dist[k][j] < dist[i][j])
                     dist[i][j] = dist[i][k] + dist[k][j];
 }
+
+int main() {
+    int dist[MAX][MAX];
+    char u, v;
+    int w;
+    FILE *file = fopen("fdf.txt", "r");
+
+    if (!file) {
+        printf("Failed to open fdf.txt\n");
+        return 1;
+    }
