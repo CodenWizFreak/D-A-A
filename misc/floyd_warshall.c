@@ -56,3 +56,18 @@ int main() {
         printf("Failed to open fdf.txt\n");
         return 1;
     }
+     int edges;
+    fscanf(file, "%d", &edges);
+
+    // Initialize distance matrix
+    for (int i = 0; i < MAX; i++)
+        for (int j = 0; j < MAX; j++)
+            dist[i][j] = (i == j) ? 0 : INF;
+
+    // Read edges from file
+    for (int i = 0; i < edges; i++) {
+        fscanf(file, " %c %c %d", &u, &v, &w);
+        int from = getNodeIndex(u);
+        int to = getNodeIndex(v);
+        dist[from][to] = w;
+    }
