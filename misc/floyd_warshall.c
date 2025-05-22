@@ -36,3 +36,12 @@ void printSolution(int dist[MAX][MAX]) {
         printf("\n");
     }
 }
+
+void floydWarshall(int dist[MAX][MAX]) {
+    for (int k = 0; k < nodeCount; k++)
+        for (int i = 0; i < nodeCount; i++)
+            for (int j = 0; j < nodeCount; j++)
+                if (dist[i][k] != INF && dist[k][j] != INF &&
+                    dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+}
