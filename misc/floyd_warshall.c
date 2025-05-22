@@ -1,3 +1,17 @@
+/*
+
+Shortest distances between every pair of vertices:
+
+    a  b  c  d  e  f
+ a  0 16 13 28 27 31
+ b  ∞  0 10 12 24 28
+ c  ∞  4  0 16 14 18
+ d  ∞ 13  9  0 28 20
+ e  ∞ 17 13  7  0  4
+ f  ∞  ∞  ∞  ∞  ∞  0
+
+*/    
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
