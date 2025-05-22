@@ -56,7 +56,7 @@ int main() {
         printf("Failed to open fdf.txt\n");
         return 1;
     }
-     int edges;
+    int edges;
     fscanf(file, "%d", &edges);
 
     // Initialize distance matrix
@@ -71,3 +71,13 @@ int main() {
         int to = getNodeIndex(v);
         dist[from][to] = w;
     }
+
+    fclose(file);
+
+    // Run Floyd-Warshall algorithm
+    floydWarshall(dist);
+
+    // Print shortest paths
+    printSolution(dist);
+    return 0;
+}
