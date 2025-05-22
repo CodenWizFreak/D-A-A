@@ -75,3 +75,13 @@ int main() {
     while (fscanf(file, " %c %c %d", &u, &v, &cap) == 3) {
         graph[charToIndex(u)][charToIndex(v)] = cap;
     }
+    fclose(file);
+
+    int source = charToIndex('a');
+    int sink = charToIndex('f');
+
+    int maxFlow = fordFulkerson(graph, source, sink, V);
+    printf("Maximum flow from a to f is: %d\n", maxFlow);
+
+    return 0;
+}
