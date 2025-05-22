@@ -65,3 +65,13 @@ int main() {
         printf("Error opening fdf.txt\n");
         return 1;
     }
+    int V;
+    fscanf(file, "%d", &V);
+
+    int graph[MAX][MAX] = {0};
+
+    char u, v;
+    int cap;
+    while (fscanf(file, " %c %c %d", &u, &v, &cap) == 3) {
+        graph[charToIndex(u)][charToIndex(v)] = cap;
+    }
