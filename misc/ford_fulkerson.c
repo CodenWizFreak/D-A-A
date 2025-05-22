@@ -35,3 +35,10 @@ int fordFulkerson(int graph[MAX][MAX], int s, int t, int V) {
 
     int parent[MAX];
     int max_flow = 0;
+    while (bfs(rGraph, s, t, parent, V)) {
+        int path_flow = INT_MAX;
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            if (rGraph[u][v] < path_flow)
+                path_flow = rGraph[u][v];
+        }
