@@ -56,3 +56,18 @@ void bellmanFord(Edge edges[], int E, int V, int src, int dist[]) {
             printf("%d\n", dist[i]);
     }
 }
+
+int main() {
+    FILE *fp = fopen("bmf.txt", "r");
+    if (!fp) {
+        perror("Unable to open file");
+        return 1;
+    }
+
+    int V;
+    fscanf(fp, "%d", &V);
+
+    Edge edges[1000];
+    int E = 0;
+    char from, to;
+    int weight;
