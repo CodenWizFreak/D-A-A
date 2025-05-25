@@ -71,3 +71,16 @@ int main() {
     int E = 0;
     char from, to;
     int weight;
+
+    while (fscanf(fp, " %c %c %d", &from, &to, &weight) == 3) {
+        edges[E].from = vertexIndex(from);
+        edges[E].to = vertexIndex(to);
+        edges[E].weight = weight;
+        E++;
+    }
+    fclose(fp);
+
+    int dist[MAX_VERTICES];
+    char src_char;
+    printf("Enter source vertex (a-%c): ", 'a' + V - 1);
+    scanf(" %c", &src_char);
