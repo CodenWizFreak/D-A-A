@@ -1,3 +1,16 @@
+/*
+
+Enter source vertex (a-f): c
+Vertex   Distance from source 'c'
+  a          INF
+  b          -4
+  c          0
+  d          14
+  e          14
+  f          10
+
+*/
+    
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
