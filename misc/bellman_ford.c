@@ -35,3 +35,24 @@ void bellmanFord(Edge edges[], int E, int V, int src, int dist[]) {
             }
         }
     }
+    // Check for negative-weight cycle
+    for (int j = 0; j < E; j++) {
+        int u = edges[j].from;
+        int v = edges[j].to;
+        int w = edges[j].weight;
+        if (dist[u] != INF && dist[u] + w < dist[v]) {
+            printf("Graph contains a negative weight cycle\n");
+            return;
+        }
+    }
+
+    // Print distances
+    printf("Vertex   Distance from source '%c'\n", vertexChar(src));
+    for (int i = 0; i < V; i++) {
+        printf("  %c \t\t", vertexChar(i));
+        if (dist[i] == INF)
+            printf("INF\n");
+        else
+            printf("%d\n", dist[i]);
+    }
+}
