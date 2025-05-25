@@ -84,3 +84,14 @@ int main() {
     char src_char;
     printf("Enter source vertex (a-%c): ", 'a' + V - 1);
     scanf(" %c", &src_char);
+
+    int src = vertexIndex(src_char);
+    if (src < 0 || src >= V) {
+        printf("Invalid source vertex.\n");
+        return 1;
+    }
+
+    bellmanFord(edges, E, V, src, dist);
+
+    return 0;
+}
