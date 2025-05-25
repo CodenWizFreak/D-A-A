@@ -212,3 +212,21 @@ static void freeCodes(char *codes[256]) {
     for (int i = 0; i < 256; ++i)
         free(codes[i]);
 }
+
+/* ---------------- Driver ---------------- */
+int main(void) {
+    printf("Enter a string to encode using Huffman Coding:\n> ");
+    unsigned char input[1024];
+    if (!fgets((char *)input, sizeof(input), stdin)) {
+        fprintf(stderr, "Failed to read input.\n");
+        return 1;
+    }
+
+    size_t n = strlen((char *)input);
+    if (n && input[n - 1] == '\n')
+        input[n - 1] = '\0'; /* Remove trailing newline */
+
+    /* Step 1: Count frequencies */
+    unsigned freq[256] = {0};
+    for (unsigned char *p = input; *p; ++p)
+        ++freq[*p];
