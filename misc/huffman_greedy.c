@@ -1,3 +1,32 @@
+/*
+
+Enter text: huffman coding is fun
+
+Character | Frequency | Huffman Code
+------------------------------------
+  (space) |     3     | 10
+a         |     1     | 11100
+c         |     1     | 11101
+d         |     1     | 11110
+f         |     3     | 00
+g         |     1     | 11111
+h         |     1     | 11000
+i         |     2     | 1101
+m         |     1     | 11001
+n         |     3     | 01
+o         |     2     | 1000
+s         |     1     | 10010
+u         |     2     | 10011
+
+Encoded bit-stream:
+110000011000111000010010110000110001101010001000111110110111011000101111100011010010100110
+
+Total bits (uncompressed, ASCII): 176
+Total bits after Huffman coding  : 93
+Compression ratio                : 1.89× smaller
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
