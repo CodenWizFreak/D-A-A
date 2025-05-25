@@ -130,3 +130,32 @@ static MinHeapNode *buildHuffmanTree(const unsigned char data[], const unsigned 
     free(minHeap);
     return root;
 }
+
+/* Utility to check if this node is leaf */
+static int isLeaf(MinHeapNode *root) { return !(root->left) && !(root->right); }
+
+#define MAX_TREE_HT 256
+
+/* Print Huffman codes using the Huffman tree */
+static void storeCodes(MinHeapNode *root, int arr[], int top, char *codes[256]) {
+    /* Assign 0 to left edge and recur */
+    if (root->left) {
+        arr[top] = 0;
+        storeCodes(root->left, arr, top + 1, codes);
+    }
+
+    /* Assign 1 to right edge and recur */
+    if (root->right) {
+        arr[top] = 1;
+        storeCodes(root->right, arr, top + 1, codes);
+    }
+
+    /* If this is a leaf node, store the code */
+    if (isLeaf(root)) {
+        char *code = (char *)malloc((top + 1) * sizeof(char));
+        for (int i = 0; i < top; ++i)
+            code[i] = arr[i] + '0';
+        code[top] = '\0';
+        codes[root->data] = code;
+    }
+}
