@@ -198,3 +198,17 @@ static char *decode(const char *encoded, MinHeapNode *root) {
     *out = '\0';
     return decoded;
 }
+
+/* Free the Huffman tree */
+static void freeTree(MinHeapNode *root) {
+    if (!root) return;
+    freeTree(root->left);
+    freeTree(root->right);
+    free(root);
+}
+
+/* Free codes table */
+static void freeCodes(char *codes[256]) {
+    for (int i = 0; i < 256; ++i)
+        free(codes[i]);
+}
