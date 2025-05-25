@@ -159,3 +159,20 @@ static void storeCodes(MinHeapNode *root, int arr[], int top, char *codes[256]) 
         codes[root->data] = code;
     }
 }
+
+/* Encode the input string using the generated codes */
+static char *encode(const unsigned char *str, char *codes[256]) {
+    size_t len = 0;
+    for (const unsigned char *p = str; *p; ++p)
+        len += strlen(codes[*p]);
+
+    char *encoded = (char *)malloc(len + 1);
+    char *out = encoded;
+    for (const unsigned char *p = str; *p; ++p) {
+        const char *code = codes[*p];
+        while (*code)
+            *out++ = *code++;
+    }
+    *out = '\0';
+    return encoded;
+}
