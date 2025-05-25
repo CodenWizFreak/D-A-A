@@ -247,3 +247,33 @@ int main(void) {
         printf("Empty string provided. Nothing to encode.\n");
         return 0;
     }
+
+    /* Step 2: Build Huffman Tree */
+    MinHeapNode *root = buildHuffmanTree(characters, frequencies, size);
+
+    /* Step 3: Generate codes */
+    char *codes[256] = {0};
+    int arr[MAX_TREE_HT];
+    storeCodes(root, arr, 0, codes);
+
+    printf("\nCharacter Codes:\n");
+    for (int i = 0; i < size; ++i)
+        printf("%c : %s\n", characters[i], codes[characters[i]]);
+
+    /* Step 4: Encode */
+    char *encoded = encode(input, codes);
+    printf("\nEncoded string:\n%s\n", encoded);
+
+    /* Step 5: Decode (to verify correctness) */
+    char *decoded = decode(encoded, root);
+    printf("\nDecoded string:\n%s\n", decoded);
+
+    /* Clean up */
+    free(encoded);
+    free(decoded);
+    freeCodes(codes);
+    freeTree(root);
+
+    return 0;
+}
+
