@@ -60,3 +60,26 @@ static void minHeapify(MinHeap *minHeap, int idx) {
         minHeapify(minHeap, smallest);
     }
 }
+
+static int isSizeOne(MinHeap *minHeap) { return (minHeap->size == 1); }
+
+/* Extract the minimum value (root) from heap */
+static MinHeapNode *extractMin(MinHeap *minHeap) {
+    MinHeapNode *temp = minHeap->array[0];
+    minHeap->array[0] = minHeap->array[minHeap->size - 1];
+    --minHeap->size;
+    minHeapify(minHeap, 0);
+    return temp;
+}
+
+/* Insert a new node to Min‑Heap */
+static void insertMinHeap(MinHeap *minHeap, MinHeapNode *node) {
+    ++minHeap->size;
+    int i = (int)minHeap->size - 1;
+
+    while (i && node->freq < minHeap->array[(i - 1) / 2]->freq) {
+        minHeap->array[i] = minHeap->array[(i - 1) / 2];
+        i = (i - 1) / 2;
+    }
+    minHeap->array[i] = node;
+}
