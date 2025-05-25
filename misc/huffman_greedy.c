@@ -36,3 +36,27 @@ static MinHeap *createMinHeap(unsigned capacity) {
     return minHeap;
 }
 
+/* Swap two node pointers */
+static void swapMinHeapNode(MinHeapNode **a, MinHeapNode **b) {
+    MinHeapNode *t = *a;
+    *a = *b;
+    *b = t;
+}
+
+/* Standard min‑heapify function */
+static void minHeapify(MinHeap *minHeap, int idx) {
+    int smallest = idx;
+    int left = 2 * idx + 1;
+    int right = 2 * idx + 2;
+
+    if (left < (int)minHeap->size && minHeap->array[left]->freq < minHeap->array[smallest]->freq)
+        smallest = left;
+
+    if (right < (int)minHeap->size && minHeap->array[right]->freq < minHeap->array[smallest]->freq)
+        smallest = right;
+
+    if (smallest != idx) {
+        swapMinHeapNode(&minHeap->array[smallest], &minHeap->array[idx]);
+        minHeapify(minHeap, smallest);
+    }
+}
