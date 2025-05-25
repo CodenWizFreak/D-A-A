@@ -230,3 +230,20 @@ int main(void) {
     unsigned freq[256] = {0};
     for (unsigned char *p = input; *p; ++p)
         ++freq[*p];
+
+    /* Collect unique characters */
+    unsigned char characters[256];
+    unsigned frequencies[256];
+    int size = 0;
+    for (int i = 0; i < 256; ++i) {
+        if (freq[i]) {
+            characters[size] = (unsigned char)i;
+            frequencies[size] = freq[i];
+            ++size;
+        }
+    }
+
+    if (size == 0) {
+        printf("Empty string provided. Nothing to encode.\n");
+        return 0;
+    }
