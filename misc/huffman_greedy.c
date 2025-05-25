@@ -100,3 +100,33 @@ static MinHeap *createAndBuildMinHeap(const unsigned char data[], const unsigned
     buildMinHeap(minHeap);
     return minHeap;
 }
+
+/* Build the Huffman tree and return its root */
+static MinHeapNode *buildHuffmanTree(const unsigned char data[], const unsigned freq[], int size) {
+    MinHeapNode *left, *right, *top;
+
+    /* Step 1: Create a min heap */
+    MinHeap *minHeap = createAndBuildMinHeap(data, freq, size);
+
+    /* Iterate until only one node remains */
+    while (!isSizeOne(minHeap)) {
+        /* Step 2: Extract the two minimum freq nodes */
+        left = extractMin(minHeap);
+        right = extractMin(minHeap);
+
+        /* Step 3: Create a new internal node with frequency left->freq + right->freq.
+         *        '$' is a special value for internal nodes, not used */
+        top = newNode('$', left->freq + right->freq);
+        top->left = left;
+        top->right = right;
+
+        /* Step 4: Add this node to the min heap */
+        insertMinHeap(minHeap, top);
+    }
+
+    /* Step 5: The remaining node is the root */
+    MinHeapNode *root = extractMin(minHeap);
+    free(minHeap->array);
+    free(minHeap);
+    return root;
+}
