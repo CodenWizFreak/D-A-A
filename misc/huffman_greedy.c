@@ -83,3 +83,20 @@ static void insertMinHeap(MinHeap *minHeap, MinHeapNode *node) {
     }
     minHeap->array[i] = node;
 }
+
+/* Build min heap */
+static void buildMinHeap(MinHeap *minHeap) {
+    int n = (int)minHeap->size - 1;
+    for (int i = (n - 1) / 2; i >= 0; --i)
+        minHeapify(minHeap, i);
+}
+
+/* Creates a min‑heap of capacity equal to size and inserts all characters of data[] in heap */
+static MinHeap *createAndBuildMinHeap(const unsigned char data[], const unsigned freq[], int size) {
+    MinHeap *minHeap = createMinHeap((unsigned)size);
+    for (int i = 0; i < size; ++i)
+        minHeap->array[i] = newNode(data[i], freq[i]);
+    minHeap->size = (unsigned)size;
+    buildMinHeap(minHeap);
+    return minHeap;
+}
