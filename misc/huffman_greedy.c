@@ -176,3 +176,25 @@ static char *encode(const unsigned char *str, char *codes[256]) {
     *out = '\0';
     return encoded;
 }
+
+/* Decode the encoded string using the Huffman tree */
+static char *decode(const char *encoded, MinHeapNode *root) {
+    /* Approximate length: decoded string <= length of encoded */
+    char *decoded = (char *)malloc(strlen(encoded) + 1);
+    char *out = decoded;
+    MinHeapNode *curr = root;
+
+    for (const char *p = encoded; *p; ++p) {
+        if (*p == '0')
+            curr = curr->left;
+        else
+            curr = curr->right;
+
+        if (isLeaf(curr)) {
+            *out++ = curr->data;
+            curr = root;
+        }
+    }
+    *out = '\0';
+    return decoded;
+}
