@@ -1,4 +1,4 @@
-# Design and Analysis of Algorithms
+# Design and Analysis of Algorithms (DAA)
 
 ## Contents:
 - Day 1: Matrix Multiplication operations
